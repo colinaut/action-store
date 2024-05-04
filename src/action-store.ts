@@ -62,13 +62,15 @@ export class ActionStore extends HTMLElement {
 		});
 
 		// Listener for storage event to get values from store
-		window.addEventListener("storage", (e) => {
-			const storeKey = this.store;
-			if (!storeKey) return;
-			if (e.key === storeKey) {
-				this.getStoreForAllElements();
-			}
-		});
+		if (this.hasAttribute("store-listen")) {
+			window.addEventListener("storage", (e) => {
+				const storeKey = this.store;
+				if (!storeKey) return;
+				if (e.key === storeKey) {
+					this.getStoreForAllElements();
+				}
+			});
+		}
 	}
 
 	connectedCallback() {
