@@ -1,16 +1,26 @@
 {
 	"name": "web-component-starter",
-	"version": "1.0.0",
+	"version": "0.1.0",
 	"description": "",
 	"keywords": [
 		"web component",
 		"typescript"
 	],
-	"repository": "",
+	"repository": "https://github.com/colinaut/action-store",
 	"license": "MIT",
 	"author": "",
 	"type": "module",
-	"main": "dist/web-component-light-dom-ts.js",
+	"main": "dist/action-store.js",
+	"exports": {
+		".": {
+			"import": "./dist/index.js"
+		},
+		"./dist/index.js": "./dist/index.js",
+		"./dist/action-store.js": "./dist/action-store.js"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"scripts": {
 		"build": "tsc && vite build && rm -rf docs && cp -r dist docs",
 		"dev": "vite",

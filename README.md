@@ -1,7 +1,28 @@
-## Web Component Starter
+# Action Store
 
-Basic bare bones native web component starter without a framework. Uses Vite. Includes examples for Light DOM and Shadow DOM web components using Typescript or vanilla JavaScript.
+Simple Light DOM "HTML" Web Component for getting and setting values in local storage.
 
-Created this as I couldn't find a good web component starter that didn't use Lit. Lit is great and all but sometimes it's way more than I need. There are some out there but they either use Webpack or Glup — Vite is much nicer for developing with.
+## <action-store>
 
-Build script automatically copies to docs folder for github pages.
+### Attributes
+
+* store: `store="example-store"` string which is the key for the local storage to use
+* store-listen: set this attribute to have the component listen for the "storage" event. This will trigger reupdate on all data-get-store elements.
+* event-type: event that triggers the setStore on form fields. Defaults to "change"
+* debug: show all my console.logs for testing purposes
+
+## Enhancing Elements
+
+Get or set store by adding data attributes to any child elements of this component.
+
+### Attributes
+
+* `data-get-store`
+  * Retrieves a value from the local storage and updates the element with the retrieved value.
+  * Updates form field values or checks checkboxes or radios.
+  * Normal elements have their textContent replaced with the retrieved value.
+  * add a value to make it access a named property of the local storage object `data-get-store="animal"`; without a value it assumes the local storage is a simple string.
+* `data-set-store`
+  * Stores value from form fields on "change" (or "input")
+  * Dispatches a StorageEvent with the local storage key so that any matching data-get-store elements that are listening will update.
+  * add a value to make it save as a named property of the local storage object `data-get-store="animal"`; without a value it assumes the local storage is a simple string.
