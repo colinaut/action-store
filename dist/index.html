@@ -3,25 +3,61 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Web Component Starter</title>
-		<script type="module" crossorigin src="/web-component-light-dom-ts.js"></script>
-		<script type="module" crossorigin src="/web-component-shadow-dom-ts.js"></script>
-		<script type="module" crossorigin src="/web-component-light-dom-js.js"></script>
-		<script type="module" crossorigin src="/web-component-shadow-dom-js.js"></script>
+		<title>Action Store</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css" />
+		<script type="module" crossorigin src="/action-store.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/main.css">
 	</head>
 	<body>
-		<h1>Web Component Starter</h1>
-		<p>
-			Basic bare bones native web component starter without a framework. Uses Vite. Includes examples for Light DOM and Shadow DOM web components using Typescript or vanilla
-			JavaScript.
-		</p>
-		<h2>Light DOM Web Component (Typescript)</h2>
-		<web-component-light-dom-ts></web-component-light-dom-ts>
-		<h2>Shadow DOM Web Component (Typescript)</h2>
-		<web-component-shadow-dom-ts></web-component-shadow-dom-ts>
-		<h2>Light DOM Web Component (Javascript)</h2>
-		<web-component-light-dom-js></web-component-light-dom-js>
-		<h2>Shadow DOM Web Component (Javascript)</h2>
-		<web-component-shadow-dom-js></web-component-shadow-dom-js>
+		<h1>Action Store</h1>
+		<p>A simple light DOM "HTML" Web Component that allows you to get and store data in local storage.</p>
+		<div class="grid grid-cols-2 gap-8">
+			<action-store store="af-store1" store-listen debug>
+				<h2>Form Elements using action-store "change" event</h2>
+				<form>
+					<label for="name">Name</label>
+					<input type="text" id="name" data-get-store="name" data-set-store="name" />
+					<label for="animal">Favorite Animal</label>
+					<select name="animal" id="animal" data-get-store="animal" data-set-store="animal">
+						<option value="" default selected>Choose an animal</option>
+						<option>Dog</option>
+						<option>Cat</option>
+						<option>Bunny</option>
+						<option>Snake</option>
+						<option>Hamster</option>
+					</select>
+					<p>Your name is: <span data-get-store="name"></span></p>
+					<p>Your favorite animal is: <span data-get-store="animal"></span></p>
+					<fieldset>
+						<label><input type="checkbox" name="other" data-get-store="otherAnimals" data-set-store="otherAnimals" value="Frog" /> I like frogs</label>
+					</fieldset>
+				</form>
+			</action-store>
+			<action-store store="af-store2" store-listen debug event-type="input">
+				<h2>Form Elements using action-store "input" event</h2>
+				<form>
+					<label for="name2">Name</label>
+					<input type="text" id="name2" data-get-store="name" data-set-store="name" />
+					<label for="transport">Favorite Mode of Transport</label>
+					<select name="transport" id="transport" data-get-store="transport" data-set-store="transport">
+						<option value="" default selected>Choose a transport</option>
+						<option>Tricycle</option>
+						<option>Bicycle</option>
+						<option>Skateboard</option>
+						<option>Bus</option>
+						<option>Unicycle</option>
+					</select>
+					<p>Your name is: <span data-get-store="name"></span></p>
+					<p>Your favorite transport is: <span data-get-store="transport"></span></p>
+					<fieldset>
+						<label><input type="radio" name="otherTransport" value="Tricycle" data-get-store="transport" data-set-store="transport" />Tricycle</label>
+						<label><input type="radio" name="otherTransport" value="Bicycle" data-get-store="transport" data-set-store="transport" />Bicycle</label>
+						<label><input type="radio" name="otherTransport" value="Skateboard" data-get-store="transport" data-set-store="transport" />Skateboard</label>
+						<label><input type="radio" name="otherTransport" value="Bus" data-get-store="transport" data-set-store="transport" />Bus</label>
+						<label><input type="radio" name="otherTransport" value="Unicycle" data-get-store="transport" data-set-store="transport" />Unicycle</label>
+					</fieldset>
+				</form>
+			</action-store>
+		</div>
 	</body>
 </html>
